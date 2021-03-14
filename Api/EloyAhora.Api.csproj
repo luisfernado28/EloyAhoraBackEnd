@@ -4,5 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EloyAhora.BLL\EloyAhora.BLL.csproj" />
+    <ProjectReference Include="..\EloyAhora.Entities\EloyAhora.Entities.csproj" />
+  </ItemGroup>
+
 
 </Project>

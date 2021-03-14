@@ -6,7 +6,7 @@ using System.Text;
 
 namespace EloyAhora.DAL.Models
 {
-    public class User
+    public class Product
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -17,8 +17,8 @@ namespace EloyAhora.DAL.Models
         public string Lastname { get; set; }
         [BsonElement("mail")]
         public string Mail { get; set; }
-        [BsonElement("typeofuser")]
-        public int Typeofuser { get; set; }
+        [BsonElement("typeofProduct")]
+        public int TypeofProduct { get; set; }
         [BsonElement("cellphone")]
         public string Cellphone { get; set; }
         [BsonElement("direction")]
@@ -27,7 +27,7 @@ namespace EloyAhora.DAL.Models
         public string Contact { get; set; }
     }
 
-    public enum typeOfUser
+    public enum typeOfProduct
     {
         Vendedor=1,
         Comprador=2

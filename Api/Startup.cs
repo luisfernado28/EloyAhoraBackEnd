@@ -38,7 +38,7 @@ namespace Api
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
+            app.Productouting();
 
             app.UseAuthorization();
 

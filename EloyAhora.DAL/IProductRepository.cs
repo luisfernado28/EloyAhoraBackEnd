@@ -1,16 +1,18 @@
 ﻿using EloyAhora.DAL.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace EloyAhora.DAL
 {
     public interface IProductRepository
     {
-        Product InsertProduct(Product users);
+        Task<IActionResult> InsertProductAsync(Product product);
         Product SelectProduct(int id);
-        //List<User> SelectAllProducts();
-        Product UpdateProduct(int id, Product user);
+        //List<Product> SelectAllProducts();
+        Product UpdateProduct(int id, Product product);
         void DeleteProduct(int id);
     }
 }
