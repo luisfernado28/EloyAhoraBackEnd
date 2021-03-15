@@ -1,37 +1,45 @@
 ﻿using EloyAhora.DAL.Models;
+using EloyAhora.Entities;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using System.Web.Http.Results;
 
 namespace EloyAhora.DAL
 {
     public class ProductRepository : IProductRepository
     {
-        private static String connectionString = "";
-        //private static String connectionString = Environment.GetEnvironmentVariable("SQL_STRING");
-        public void DeleteProduct(int id)
+        private readonly IMongoCollection<Product> _product;
+
+        public ProductRepository(IEloyAhoraDatabaseSettings  settings)
         {
-            throw new NotImplementedException();
+            var client = new MongoClient(settings.ConnectionString);
+            var database = client.GetDatabase(settings.DatabaseName);
+
+            _product= database.GetCollection<Product>(settings.ProductsCollectionName);
+        }
+
+        public async void DeleteProduct(string id)
+        {
+            try
+            {
+                await _product.DeleteOneAsync(evnt => evnt.Id == id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public async Task<IActionResult> InsertProductAsync(Product product)
         {
-
             try
             {
-                var client = new MongoClient(Environment.GetEnvironmentVariable("mongodb://localhost:27017"));
-                var database = client.GetDatabase("eloyahora");
-                var collection = database.GetCollection<Product>("product");
-
-                await collection.InsertOneAsync(product);
+                await _product.InsertOneAsync(product);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw new Exception("fail to fetch");
+                throw new Exception(e.Message);
             }
             return new OkObjectResult(product);
         }

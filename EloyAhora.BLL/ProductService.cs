@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EloyAhora.BLL
 {
-    public class ProductService : IProductsService
+    public class ProductService : IProductService
     {
         private IProductRepository _databaseRepository;
 
@@ -17,9 +17,9 @@ namespace EloyAhora.BLL
             _databaseRepository = usersRepository;
         }
 
-        public void DeleteProduct(int id)
+        public void DeleteProduct(string id)
         {
-            throw new NotImplementedException();
+            _databaseRepository.DeleteProduct(id);
         }
 
         public List<Product> GetAllProducts()
@@ -43,6 +43,12 @@ namespace EloyAhora.BLL
         }
 
         public Product UpdateProduct(Product Product, int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        
+        Task<IActionResult> IProductService.UpdateProduct(Product Product, int id)
         {
             throw new NotImplementedException();
         }

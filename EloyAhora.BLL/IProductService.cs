@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace EloyAhora.BLL
 {
-    public interface IProductsService
+    public interface IProductService
     {
-        Product PostProduct(Product Product);
+        Task<IActionResult> PostProduct(Product Product);
 
         Product GetProduct(int id);
 
@@ -19,6 +19,6 @@ namespace EloyAhora.BLL
 
         Task<IActionResult> UpdateProduct(Product Product, int id);
 
-        void DeleteProduct(int id);
+        void DeleteProduct(string id);
     }
 }

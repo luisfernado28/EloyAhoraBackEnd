@@ -13,9 +13,9 @@ namespace EloyAhora.Api.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private IProductsService _productservice;
+        private IProductService _productservice;
 
-        public ProductController(IProductsService productService)
+        public ProductController(IProductService productService)
         {
             _productservice = productService;
         }
@@ -24,6 +24,12 @@ namespace EloyAhora.Api.Controllers
         public async Task<IActionResult> PostProduct(Product product)
         {
             return await _productservice.PostProduct(product);
+        }
+
+        [HttpDelete("{id}")]
+        public void DeleteProduct(string id)
+        {
+            _productservice.DeleteProduct(id);
         }
     }
 }

@@ -13,6 +13,6 @@ namespace EloyAhora.DAL
         Product SelectProduct(int id);
         //List<Product> SelectAllProducts();
         Product UpdateProduct(int id, Product product);
-        void DeleteProduct(int id);
+        void DeleteProduct(string id);
     }
 }
