@@ -17,7 +17,7 @@ namespace EloyAhora.BLL
 
         List<Product> GetAllProducts();
 
-        Task<IActionResult> UpdateProduct(Product Product, int id);
+        Task<IActionResult> UpdateProduct(Product Product, string id);
 
         void DeleteProduct(string id);
     }

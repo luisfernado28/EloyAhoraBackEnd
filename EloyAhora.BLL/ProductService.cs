@@ -41,16 +41,10 @@ namespace EloyAhora.BLL
         {
             return await _databaseRepository.InsertProductAsync(Product);
         }
-
-        public Product UpdateProduct(Product Product, int id)
-        {
-            throw new NotImplementedException();
-        }
-
         
-        Task<IActionResult> IProductService.UpdateProduct(Product Product, int id)
+        public async Task<IActionResult> UpdateProduct(Product Product, string id)
         {
-            throw new NotImplementedException();
+            return await _databaseRepository.UpdateProduct(id, Product);
         }
     }
 }

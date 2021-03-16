@@ -31,5 +31,11 @@ namespace EloyAhora.Api.Controllers
         {
             _productservice.DeleteProduct(id);
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateProduct(string id, [FromBody] Product product)
+        {
+            return await _productservice.UpdateProduct(product,id);
+        }
     }
 }

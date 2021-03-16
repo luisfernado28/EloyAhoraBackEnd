@@ -12,7 +12,7 @@ namespace EloyAhora.DAL
         Task<IActionResult> InsertProductAsync(Product product);
         Product SelectProduct(int id);
         //List<Product> SelectAllProducts();
-        Product UpdateProduct(int id, Product product);
+        Task<IActionResult> UpdateProduct(string id, Product product);
         void DeleteProduct(string id);
     }
 }

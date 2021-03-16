@@ -49,11 +49,26 @@ namespace EloyAhora.DAL
             throw new NotImplementedException();
         }
 
-        public Product UpdateProduct(int id, Product product)
+        public async Task<IActionResult> UpdateProduct(string id, Product product)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var existingProduct = await _product.Find(x => x.Id == id).FirstOrDefaultAsync();
+                var newProduct = replaceProduct(id, product);
+                await _product.ReplaceOneAsync(x => x.Id == id, newProduct);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            return new OkObjectResult( product);
         }
 
+        static public Product replaceProduct(string id, Product product)
+        {
+            product.Id = id;
+            return product;
+        }
       
     }
 }
