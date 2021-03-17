@@ -1,5 +1,6 @@
 ﻿using EloyAhora.BLL;
 using EloyAhora.DAL.Models;
+using Microsoft.AspNet.OData;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -36,6 +37,13 @@ namespace EloyAhora.Api.Controllers
         public async Task<IActionResult> UpdateProduct(string id, [FromBody] Product product)
         {
             return await _productservice.UpdateProduct(product,id);
+        }
+
+        [HttpGet]
+        [EnableQuery]
+        public async Task<IActionResult> GetProducts()
+        {
+            return await _productservice.GetProduct();
         }
     }
 }

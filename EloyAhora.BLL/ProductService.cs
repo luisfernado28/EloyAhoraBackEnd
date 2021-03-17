@@ -32,9 +32,9 @@ namespace EloyAhora.BLL
             throw new NotImplementedException();
         }
 
-        public Product GetProduct(string email)
+        public async Task<IActionResult> GetProduct()
         {
-            throw new NotImplementedException();
+            return await _databaseRepository.SelectProducts();
         }
 
         public async Task<IActionResult> PostProduct(Product Product)

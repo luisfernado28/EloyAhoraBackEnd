@@ -3,6 +3,7 @@ using EloyAhora.Entities;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace EloyAhora.DAL
@@ -44,9 +45,19 @@ namespace EloyAhora.DAL
             return new OkObjectResult(product);
         }
 
-        public Product SelectProduct(int id)
+        public async Task<IActionResult> SelectProducts()
         {
-            throw new NotImplementedException();
+            List<Product> prods = new List<Product>();
+            try
+            {
+                var filter = FilterDefinition<Product>.Empty;
+                prods =  _product.FindAsync(filter).Result.ToList();
+                return new OkObjectResult(prods);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public async Task<IActionResult> UpdateProduct(string id, Product product)

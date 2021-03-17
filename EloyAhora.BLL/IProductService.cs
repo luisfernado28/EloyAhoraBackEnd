@@ -11,11 +11,7 @@ namespace EloyAhora.BLL
     {
         Task<IActionResult> PostProduct(Product Product);
 
-        Product GetProduct(int id);
-
-        Product GetProduct(string email);
-
-        List<Product> GetAllProducts();
+        Task<IActionResult> GetProduct();
 
         Task<IActionResult> UpdateProduct(Product Product, string id);
 

@@ -1,6 +1,7 @@
 using EloyAhora.BLL;
 using EloyAhora.DAL;
 using EloyAhora.Entities;
+using Microsoft.AspNet.OData.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -32,7 +33,8 @@ namespace Api
             services.AddSingleton<IProductService ,ProductService>();
             services.AddSingleton<IProductRepository,ProductRepository>();
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
+            services.AddOData();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +53,8 @@ namespace Api
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.EnableDependencyInjection();
+                endpoints.Select().Filter().Expand();
                 endpoints.MapControllers();
             });
         }
