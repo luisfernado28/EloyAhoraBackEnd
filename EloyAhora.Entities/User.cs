@@ -14,8 +14,8 @@ namespace EloyAhora.DAL.Models
         public string Lastname { get; set; }
         [BsonElement("mail")]
         public string Mail { get; set; }
-        [BsonElement("typeofProduct")]
-        public int TypeofProduct { get; set; }
+        [BsonElement("typeofUser")]
+        public int TypeofUser { get; set; }
         [BsonElement("cellphone")]
         public string Cellphone { get; set; }
         [BsonElement("direction")]

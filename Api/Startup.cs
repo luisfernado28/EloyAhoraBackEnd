@@ -30,8 +30,12 @@ namespace Api
                 sp.GetRequiredService<IOptions<EloyAhoraDatabaseSettings>>().Value);
 
 
+
             services.AddSingleton<IProductService ,ProductService>();
             services.AddSingleton<IProductRepository,ProductRepository>();
+
+            services.AddSingleton<IUserService, UserService>();
+            services.AddSingleton<IUserRepository, UserReposiroy>();
 
             services.AddControllers().AddNewtonsoftJson();
             services.AddOData();

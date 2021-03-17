@@ -22,16 +22,6 @@ namespace EloyAhora.BLL
             _databaseRepository.DeleteProduct(id);
         }
 
-        public List<Product> GetAllProducts()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Product GetProduct(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<IActionResult> GetProduct()
         {
             return await _databaseRepository.SelectProducts();
