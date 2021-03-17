@@ -10,7 +10,7 @@ namespace EloyAhora.DAL
     public interface IProductRepository
     {
         Task<IActionResult> InsertProductAsync(Product product);
-        Task<IActionResult>  SelectProducts();
+        Task<IActionResult> SelectProducts();
         Task<IActionResult> UpdateProduct(string id, Product product);
         void DeleteProduct(string id);
     }
