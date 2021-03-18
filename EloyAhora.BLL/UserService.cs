@@ -24,7 +24,7 @@ namespace EloyAhora.BLL
 
         public Task<IActionResult> GetUser()
         {
-            throw new NotImplementedException();
+           return _databaseRepository.SelectUsers();
         }
 
         public async Task<IActionResult> PostUser(User User)

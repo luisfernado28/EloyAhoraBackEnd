@@ -51,7 +51,7 @@ namespace EloyAhora.DAL
             try
             {
                 var filter = FilterDefinition<Product>.Empty;
-                prods =  _product.FindAsync(filter).Result.ToList();
+                prods =   _product.FindAsync(filter).Result.ToList();
                 return new OkObjectResult(prods);
             }
             catch (Exception e)

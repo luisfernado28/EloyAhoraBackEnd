@@ -2,6 +2,7 @@
 using EloyAhora.BLL;
 using System.Threading.Tasks;
 using EloyAhora.DAL.Models;
+using Microsoft.AspNet.OData;
 
 namespace EloyAhora.Api.Controllers
 {
@@ -18,7 +19,7 @@ namespace EloyAhora.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostProduct(User user)
+        public async Task<IActionResult> PostUser(User user)
         {
             return await _userService.PostUser(user);
         }
@@ -30,9 +31,16 @@ namespace EloyAhora.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateProduct(string id, [FromBody] User user)
+        public async Task<IActionResult> UpdateUser(string id, [FromBody] User user)
         {
             return await _userService.UpdateUser(user, id);
+        }
+
+        [HttpGet]
+        [EnableQuery]
+        public async Task<IActionResult> GetProducts()
+        {
+            return await _userService.GetUser();
         }
 
 

@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace EloyAhora.DAL
 {
-    public class UserReposiroy : IUserRepository
+    public class UserRepository : IUserRepository
     {
         private readonly IMongoCollection<User> _userDB;
 
-        public UserReposiroy(IEloyAhoraDatabaseSettings settings)
+        public UserRepository(IEloyAhoraDatabaseSettings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);
@@ -46,9 +46,19 @@ namespace EloyAhora.DAL
             return new OkObjectResult(User);
         }
 
-        public Task<IActionResult> SelectUsers()
+        public async Task<IActionResult> SelectUsers()
         {
-            throw new NotImplementedException();
+            List<User> users = new List<User>();
+            try
+            {
+                var filter = FilterDefinition<User>.Empty;
+                users = _userDB.FindAsync(filter).Result.ToList();
+                return new OkObjectResult(users);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public async Task<IActionResult> UpdateUser(string id, User User)
