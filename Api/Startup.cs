@@ -41,6 +41,8 @@ namespace Api
             services.AddSingleton<IUserService, UserService>();
             services.AddSingleton<IUserRepository, UserRepository>();
 
+            services.AddSingleton<ITagService, TagService>();
+            services.AddSingleton<ITagRepository, TagRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

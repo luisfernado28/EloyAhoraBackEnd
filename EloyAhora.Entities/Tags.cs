@@ -6,7 +6,7 @@ using System.Text;
 
 namespace EloyAhora.DAL.Models
 {
-    class Tag
+    public class Tags
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
